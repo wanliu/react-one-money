@@ -17,6 +17,31 @@ export function fetchList() {
   };
 }
 
+export function fetchOneMoney() {
+  return (dispatch) => {
+    _fetch(`${__API__}/${__ONE_MONEY_ID__}`)
+      .then(json => {
+        dispatch({
+          type: 'FETCH_ONE_MONEY_DONE',
+          header: json.header,
+          footer: json.footer,
+        });
+      });
+  };
+}
+
+export function fetchItemsWithGifts() {
+  return dispatch => {
+    _fetch(`${__API__}/${__ONE_MONEY_ID__}/items_with_gifts`)
+    .then(json => {
+      dispatch({
+        type: 'FETCH_ITEMS_WITH_GIFT_DONE',
+        itemsWithGifts: json,
+      });
+    });
+  };
+}
+
 export function updateItemStatus(id, status) {
   return dispatch => {
     dispatch({type: 'UPDATE_ITEM_DONE', item: {status}, id, tag: 'updateItemStatus'});

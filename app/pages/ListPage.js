@@ -3,6 +3,7 @@ import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import Loading from 'halogen/ScaleLoader';
 import DRCode from '../components/DRCode';
+import ItemWithGifts from '../components/ItemWithGifts';
 
 import * as Actions from '../actions';
 import ItemsGroup from '../components/ItemsGroup';
@@ -18,6 +19,8 @@ class ListPage extends Component {
   componentDidMount() {
     const {dispatch} = this.props;
     dispatch(Actions.fetchList());
+    dispatch(Actions.fetchOneMoney());
+    dispatch(Actions.fetchItemsWithGifts());
   }
 
   onScroll(e) {
@@ -85,7 +88,30 @@ class ListPage extends Component {
   }
 
   render() {
-    const {list: {listFetched}} = this.props;
+    const {
+      list: { listFetched, header, footer, itemsWithGifts },
+      dispatch
+    } = this.props;
+
+    const boundActionCreators = bindActionCreators(Actions, dispatch);
+    const headerHTML = header.replace(/&lt;/g, '<').replace(/&gt;/g, '>');
+    const footerHTML = footer.replace(/&lt;/g, '<').replace(/&gt;/g, '>');
+
+    let sections = null;
+
+    if (itemsWithGifts.length > 0) {
+      sections = (
+        <div className="gifts-items-container">
+          <div className="gift-flag">
+            <img src="http://wanliu-piano.b0.upaiyun.com/uploads/shop/logo/102/be36fef84b9e275eadfaf66993e76e54.png" />
+          </div>
+          <div className="sub-title">
+            生产日期最新&nbsp;<b>+</b>&nbsp;珍贵礼品&nbsp;,&nbsp;让你双重优惠
+          </div>
+          {itemsWithGifts.map(item => <ItemWithGifts key={item.id} {...item} {...boundActionCreators} />)}
+        </div>
+      );
+    }
 
     return (
       <div className="page-container">
@@ -101,10 +127,13 @@ class ListPage extends Component {
           <div className="list-page" ref="list-page">
             <img className="list-poster" src={__LIST_IMG__}/>
             {!listFetched && <div style={{textAlign: 'center'}}><Loading color="#FFF" size="9px" margin="4px"/></div>}
+            <div dangerouslySetInnerHTML={{__html: headerHTML }}></div>
             <ul className="list">
               {this.sortByPrice([1, 3, 5, 10])}
               {this.otherPrice([1, 3, 5, 10])}
+              {sections}
             </ul>
+            <div dangerouslySetInnerHTML={{__html: footerHTML }}></div>
           </div>
         </div>
       </div>

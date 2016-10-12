@@ -4,6 +4,9 @@ import update from 'react-addons-update';
 const initialState = {
   listFetched: false,
   items: [],
+  itemsWithGifts: [],
+  header: '',
+  footer: '',
 };
 
 
@@ -20,10 +23,19 @@ export default function(state = initialState, action) {
       return parseData(item);
     });
 
-    return {
-      listFetched: true,
-      items,
-    };
+    return update(state, {
+      listFetched: { $set: true},
+      items: { $set: items },
+    });
+  }
+
+  case 'FETCH_ONE_MONEY_DONE': {
+    const { header, footer } = action;
+
+    return update(state, {
+      header: { $set: header },
+      footer: { $set: footer },
+    });
   }
 
   case 'FETCH_CALLBACK_DONE': {
@@ -102,6 +114,13 @@ export default function(state = initialState, action) {
       }
     });
   }
+
+  case 'FETCH_ITEMS_WITH_GIFT_DONE': {
+    return update(state, {
+      itemsWithGifts: {$push: action.itemsWithGifts }
+    });
+  }
+
   default: return state;
   }
 }
