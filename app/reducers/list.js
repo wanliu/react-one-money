@@ -116,8 +116,18 @@ export default function(state = initialState, action) {
   }
 
   case 'FETCH_ITEMS_WITH_GIFT_DONE': {
+    const items = [];
+    const { itemsWithGifts } = action;
+
+    for (let i = 0; i < itemsWithGifts.length; i++) {
+      const item = itemsWithGifts[i];
+      const _item = state.itemsWithGifts.find(it => it.id == item.id);
+
+      if (!_item) items.push(item);
+    }
+
     return update(state, {
-      itemsWithGifts: {$push: action.itemsWithGifts }
+      itemsWithGifts: {$push: items }
     });
   }
 
