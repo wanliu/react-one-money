@@ -19,6 +19,7 @@
     "__TIMESTAMP__": true,
     "__INTRODUCTION_POSTER__": true,
     "__GIFT_ITEM_LINK__": true,
+    "__SHOW_INTRODUCE__": true,
   },
   "plugins": [
     "react",
