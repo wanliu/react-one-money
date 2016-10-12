@@ -94,8 +94,8 @@ class ListPage extends Component {
     } = this.props;
 
     const boundActionCreators = bindActionCreators(Actions, dispatch);
-    const headerHTML = header.replace(/&lt;/g, '<').replace(/&gt;/g, '>');
-    const footerHTML = footer.replace(/&lt;/g, '<').replace(/&gt;/g, '>');
+    const headerHTML = typeof header == 'string' ? header.replace(/&lt;/g, '<').replace(/&gt;/g, '>') : '';
+    const footerHTML = typeof footer == 'string' ? footer.replace(/&lt;/g, '<').replace(/&gt;/g, '>') : '';
 
     let sections = null;
 
