@@ -10,8 +10,10 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const config = {
   __ONE_MONEY_ID__        : JSON.stringify(process.env.ONE_MONEY || 28), // 活动ID
   __QR_CODE__             : JSON.stringify(process.env.QRCODE || true), // 是否显示二维码
-  __HOME_IMG__            : JSON.stringify(process.env.HOMEIMG || 'http://wanliu-piano.b0.upaiyun.com/uploads/shop/logo/198/69ead15951e2096e29f1a57d16255d96.jpg'), // 首页图片
-  __LIST_IMG__            : JSON.stringify(process.env.LISTIMG || 'http://wanliu-piano.b0.upaiyun.com/uploads/shop/logo/198/4b878ea97ce8d43d97eed22965ec6a73.jpg'),  // 列表图片
+  // __HOME_IMG__            : JSON.stringify(process.env.HOMEIMG || 'http://wanliu-piano.b0.upaiyun.com/uploads/shop/logo/198/69ead15951e2096e29f1a57d16255d96.jpg'), // 首页图片
+  __HOME_IMG__            : JSON.stringify(process.env.HOMEIMG || 'http://wanliu-piano.b0.upaiyun.com/uploads/shop/logo/198/ade983ee7db7041e5e7237b9c71ef0d7.jpg'), // 首页图片
+  // __LIST_IMG__            : JSON.stringify(process.env.LISTIMG || 'http://wanliu-piano.b0.upaiyun.com/uploads/shop/logo/198/4b878ea97ce8d43d97eed22965ec6a73.jpg'),  // 列表图片
+  __LIST_IMG__            : JSON.stringify(process.env.LISTIMG || 'http://wanliu-piano.b0.upaiyun.com/uploads/shop/logo/198/8611fe3864cae4024c05ef7fe2daef87.jpg'),  // 列表图片
   __DEFAULT_AVATAR__      : JSON.stringify(process.env.DEFAULTAVATAR || 'http://wanliu-piano.b0.upaiyun.com/uploads/shop/logo/1/default_avatar.gif!avatar'),
   __SIGNUP_URL__          : JSON.stringify(process.env.SIGNURL || 'http://m.wanliu.biz/authorize/weixin'),
   __API__                 : JSON.stringify(process.env.APIURL || '/api/promotions/one_money'),
