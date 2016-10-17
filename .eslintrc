@@ -17,7 +17,9 @@
     "__LIST_IMG__": true,
     "__INTRODUCTION_LINK__": true,
     "__TIMESTAMP__": true,
-    "__INTRODUCTION_POSTER__": true
+    "__INTRODUCTION_POSTER__": true,
+    "__GIFT_ITEM_LINK__": true,
+    "__SHOW_INTRODUCE__": true,
   },
   "plugins": [
     "react",

@@ -1,0 +1,161 @@
+
+.gifts-items-container
+  .gift-flag
+    padding 10px 0
+    text-align center
+    
+  .sub-title
+    text-align center
+    padding-bottom 10px
+    font-size 16px
+    color #fff
+    
+.item-gifts
+  position absolute
+  left 42%
+  right 0
+  top 0
+  bottom 0
+  background rgba(249, 249, 249, 0.98)
+  overflow hidden
+  // transition opacity 0.5s ease-in-out 0s
+  // -webkit-transition opacity 0.5s ease-in-out 0s
+  display none
+  
+  .close-btn
+    right 10px
+  
+  .gift-container
+    padding 15px
+    position relative
+    width 100%
+    height 100%
+    
+  .carousel-container 
+    position absolute
+    overflow hidden
+    top 15px
+    height 50%
+    left 0
+    right 0
+    padding 0 10px
+    
+    .prev-btn, .next-btn
+      position absolute
+      top 0
+      bottom 0
+      width 25%
+      
+      .icon-wrap
+        position absolute
+        text-align center
+        top 50%
+        left 0
+        width 100%
+        margin-top -15px
+      
+    .prev-btn
+      left 0
+
+    .next-btn
+      right 0
+    
+    .carousel-list
+      width 100%
+      overflow hidden
+      position relative
+      height 100%
+      
+      .carousel-item-wrap
+        height 100%
+        transition margin-left 0.5s ease-in-out 0s
+        -webkit-transition margin-left 0.5s ease-in-out 0s
+      
+      .carousel-item-wrap:before, .carousel-item-wrap:after
+        content ""
+        clear both
+        
+      .carousel-item-wrap:after
+        display table
+        
+      .preview-item
+        float left
+        height 100%
+        position relative
+        
+        img  
+          max-height 100%
+          width auto
+          
+        .gift-brief
+          position absolute
+          top 0
+          right 0
+          left 45%
+          line-height 1.4
+          font-size 1rem
+          
+          .gift-title
+            display -webkit-box
+            overflow hidden
+            text-overflow ellipsis
+            -webkit-line-clamp 3
+            -webkit-box-orient vertical
+            word-break break-all
+            float none
+            
+          .gift-price
+            color $red
+
+  .thumbnail-container
+    position absolute
+    bottom 15px
+    height 22%
+    left 0
+    right 0
+    padding 0 10px
+    
+    .thubnail-list
+      position relative
+      height 100%
+          
+  .gift-title
+    float left
+    padding-top 4px
+    
+    img
+      width 40px
+  
+  .thubnail-list
+    margin-left 45px
+    
+    .thubnail-list-item
+      position relative
+      float left
+      height 100%
+      padding 2px
+      margin-right 5px
+      border 1px solid #ddd
+      transition border-color 0.5s ease-in-out 0s
+      -webkit-transition border-color 0.5s ease-in-out 0s
+      
+      &.active
+        border-color #fb4521
+      
+      img
+        max-height 100%
+        width auto
+        overflow hidden
+      
+@media (min-width: 320px)
+  .item-gifts .gift-title img
+    width auto
+    
+  .item-gifts .thubnail-list
+    margin-left 65px
+    
+
+        
+
+
+  
