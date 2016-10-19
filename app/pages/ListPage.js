@@ -115,27 +115,29 @@ class ListPage extends Component {
 
     return (
       <div className="page-container">
-        {__QR_CODE__ && <DRCode showText={this.state.showDRText}/>}
-        <div className="list-page-container" onScroll={this.onScroll.bind(this)}>
-          <span className="close-btn" onClick={this.slideUp.bind(this)}>
-            <img src="http://wanliu-piano.b0.upaiyun.com/uploads/shop_category/image/a85ffb6fdda0f6a165b2a0be83247f25.png" />
-          </span>
-          { __SHOW_INTRODUCE__ &&
-            <a className="share-link" ref="share-link" href={__INTRODUCTION_LINK__}>
-              <img className="share-pic" src={__INTRODUCTION_POSTER__}
-                onLoad={this.slideDown.bind(this)}/>
-            </a>
-          }
-          <div className="list-page" ref="list-page">
-            <img className="list-poster" src={__LIST_IMG__}/>
-            {!listFetched && <div style={{textAlign: 'center'}}><Loading color="#FFF" size="9px" margin="4px"/></div>}
-            <div dangerouslySetInnerHTML={{__html: headerHTML }}></div>
-            <ul className="list">
-              {this.sortByPrice([1, 3, 5, 10])}
-              {this.otherPrice([1, 3, 5, 10])}
-              {sections}
-            </ul>
-            <div dangerouslySetInnerHTML={{__html: footerHTML }}></div>
+        <div className="container">
+          {__QR_CODE__ && <DRCode showText={this.state.showDRText}/>}
+          <div className="list-page-container" onScroll={this.onScroll.bind(this)}>
+            <span className="close-btn" onClick={this.slideUp.bind(this)}>
+              <img src="http://wanliu-piano.b0.upaiyun.com/uploads/shop_category/image/a85ffb6fdda0f6a165b2a0be83247f25.png" />
+            </span>
+            { __SHOW_INTRODUCE__ &&
+              <a className="share-link" ref="share-link" href={__INTRODUCTION_LINK__}>
+                <img className="share-pic" src={__INTRODUCTION_POSTER__}
+                  onLoad={this.slideDown.bind(this)}/>
+              </a>
+            }
+            <div className="list-page" ref="list-page">
+              <img className="list-poster" src={__LIST_IMG__}/>
+              {!listFetched && <div style={{textAlign: 'center'}}><Loading color="#FFF" size="9px" margin="4px"/></div>}
+              <div dangerouslySetInnerHTML={{__html: headerHTML }}></div>
+              <ul className="list">
+                {this.sortByPrice([1, 3, 5, 10])}
+                {this.otherPrice([1, 3, 5, 10])}
+                {sections}
+              </ul>
+              <div dangerouslySetInnerHTML={{__html: footerHTML }}></div>
+            </div>
           </div>
         </div>
       </div>

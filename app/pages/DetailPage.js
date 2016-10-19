@@ -82,61 +82,63 @@ class DetailPage extends Component {
     }
 
     return (
-      <div style={{position: 'absolute', width: '100%', height: '100%'}}>
-        <Nav />
-        <div className="page detail-page">
-          <div className="detail-top">
-            <div className="image-box">
-              {Number(fare) == 0 && <img className="mailing-fee" src="http://wanliu-piano.b0.upaiyun.com/uploads/shop/poster/102/038bffe812178917d1768b9b3d6481ce.png"/>}
-              <Slider images={image_urls} auto />
-            </div>
-            <div className="info-top">
-              <div className="start-end-wrap">
-                <img className="wings" src="http://wanliu-piano.b0.upaiyun.com/uploads/shop/poster/100159/ad6e3e53e50da45b695fa77107fadeb7.png"/>
-                <span className="start-end">{formatTime(start_at)} 至 {formatTime(end_at)}</span>
-                <img className="wings" src="http://wanliu-piano.b0.upaiyun.com/uploads/shop/poster/100159/dd76c451418cab27154ff1c75d60f515.png"/>
+      <div className="page-container">
+        <div className="container">
+          <Nav />
+          <div className="page detail-page">
+            <div className="detail-top">
+              <div className="image-box">
+                {Number(fare) == 0 && <img className="mailing-fee" src="http://wanliu-piano.b0.upaiyun.com/uploads/shop/poster/102/038bffe812178917d1768b9b3d6481ce.png"/>}
+                <Slider images={image_urls} auto />
               </div>
-              <div className="table">
-                <div className="cell logo">{+price}元购</div>
-                <div className="cell">
-                  <div><s>￥{ori_price}</s></div>
-                  <div>{completes >= 0 && `出售${completes}`}</div>
+              <div className="info-top">
+                <div className="start-end-wrap">
+                  <img className="wings" src="http://wanliu-piano.b0.upaiyun.com/uploads/shop/poster/100159/ad6e3e53e50da45b695fa77107fadeb7.png"/>
+                  <span className="start-end">{formatTime(start_at)} 至 {formatTime(end_at)}</span>
+                  <img className="wings" src="http://wanliu-piano.b0.upaiyun.com/uploads/shop/poster/100159/dd76c451418cab27154ff1c75d60f515.png"/>
                 </div>
-                <div className="cell right">
-                  <div className="yellow">{statusDescs(status, true)}</div>
-                  {status == 'started' && <CountDown td={td} time={end_at}/>}
-                  {(status == 'wait' || status == 'waiting') && <CountDown td={td} time={start_at}/>}
+                <div className="table">
+                  <div className="cell logo">{+price}元购</div>
+                  <div className="cell">
+                    <div><s>￥{ori_price}</s></div>
+                    <div>{completes >= 0 && `出售${completes}`}</div>
+                  </div>
+                  <div className="cell right">
+                    <div className="yellow">{statusDescs(status, true)}</div>
+                    {status == 'started' && <CountDown td={td} time={end_at}/>}
+                    {(status == 'wait' || status == 'waiting') && <CountDown td={td} time={start_at}/>}
+                  </div>
                 </div>
               </div>
+
+              <div className="info-main">
+                <div className="table">
+                  <div className="cell title">{title}</div>
+                  <div className="cell min">
+                    <div>剩余库存</div>
+                    <div>{total_amount - positiveNumber(completes)}</div>
+                  </div>
+                  <div className="cell min">
+                    <div>参与人数</div>
+                    <div>{participant_count + completes}</div>
+                  </div>
+                </div>
+              </div>
+              {Number(fare) == 0 && <div className="mailing-fee-text"><span>该商品免运费</span></div>}
             </div>
 
-            <div className="info-main">
-              <div className="table">
-                <div className="cell title">{title}</div>
-                <div className="cell min">
-                  <div>剩余库存</div>
-                  <div>{total_amount - positiveNumber(completes)}</div>
-                </div>
-                <div className="cell min">
-                  <div>参与人数</div>
-                  <div>{participant_count + completes}</div>
-                </div>
-              </div>
-            </div>
-            {Number(fare) == 0 && <div className="mailing-fee-text"><span>该商品免运费</span></div>}
+            {winners && winners.length > 0 ? <Winners item={item} /> : null}
+            <a className="shop" href={`/goshop/${shop_id}`}>
+              <img className="avatar" src={shop_avatar_url}/>
+              <span>{shop_name}</span>
+            </a>
+            {__QR_CODE__ && <img className="dr-img" src="http://wanliu-piano.b0.upaiyun.com/uploads/shop/poster/100193/6b4bfbba51112dffcf9915d82cd098d7.jpg" alt="dr"/>}
+            {__QR_CODE__ && <div className="dr-text">长按二维码关注更多优惠!</div>}
           </div>
-
-          {winners && winners.length > 0 ? <Winners item={item} /> : null}
-          <a className="shop" href={`/goshop/${shop_id}`}>
-            <img className="avatar" src={shop_avatar_url}/>
-            <span>{shop_name}</span>
-          </a>
-          {__QR_CODE__ && <img className="dr-img" src="http://wanliu-piano.b0.upaiyun.com/uploads/shop/poster/100193/6b4bfbba51112dffcf9915d82cd098d7.jpg" alt="dr"/>}
-          {__QR_CODE__ && <div className="dr-text">长按二维码关注更多优惠!</div>}
-        </div>
-        <div className="action-bars">
-          <StatusBar id={id} className="btn" {...item} {...boundActionCreators}/>
-          {seedState}
+          <div className="action-bars">
+            <StatusBar id={id} className="btn" {...item} {...boundActionCreators}/>
+            {seedState}
+          </div>
         </div>
       </div>
     );
