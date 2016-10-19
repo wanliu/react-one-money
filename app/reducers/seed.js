@@ -1,3 +1,5 @@
+import update from 'react-addons-update';
+
 const initialState = {
   fromSeed: null,
   seed: null,
@@ -18,8 +20,19 @@ export default function(state = initialState, action) {
   }
 
   case 'RECEIVE_SEEDS': {
-    const {seeds} = action;
-    return Object.assign({}, state, {seeds});
+    const { seeds } = action;
+    const toInsertSeeds = [];
+
+    for (let i = 0; i < seeds.length; i++) {
+      const seed = seeds[i];
+      const index = state.seeds.findIndex(s => s.id == seed.id);
+
+      if (index == -1) toInsertSeeds.push(seed);
+    }
+
+    return update(state, {
+      seeds: { $push: toInsertSeeds }
+    });
   }
 
   case 'SET_USER': {
