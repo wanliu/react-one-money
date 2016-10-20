@@ -20,6 +20,7 @@
     "__INTRODUCTION_POSTER__": true,
     "__GIFT_ITEM_LINK__": true,
     "__SHOW_INTRODUCE__": true,
+    "__COUPON_IMG_URL__": true,
   },
   "plugins": [
     "react",

@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import Loading from 'halogen/ScaleLoader';
 import DRCode from '../components/DRCode';
 import ItemWithGifts from '../components/ItemWithGifts';
-
+import Item from '../components/Item';
 import * as Actions from '../actions';
 import ItemsGroup from '../components/ItemsGroup';
 
@@ -69,7 +69,7 @@ class ListPage extends Component {
       <ItemsGroup
         key={price}
         price={price}
-        items={items.filter(item => item.price == price)}
+        items={items.filter(item => item.price == price && item.item.is_card != 'true')}
         boundActionCreators={boundActionCreators}
       />);
   }
@@ -81,7 +81,7 @@ class ListPage extends Component {
       <ItemsGroup
         key="other"
         price="other"
-        items={items.filter(item => !priceArr.includes(+item.price))}
+        items={items.filter(item => !priceArr.includes(+item.price) && item.is_card != 'true')}
         boundActionCreators={boundActionCreators}
       />
     );
@@ -89,13 +89,14 @@ class ListPage extends Component {
 
   render() {
     const {
-      list: { listFetched, header, footer, itemsWithGifts },
+      list: { listFetched, header, footer, itemsWithGifts, items },
       dispatch
     } = this.props;
 
     const boundActionCreators = bindActionCreators(Actions, dispatch);
     const headerHTML = typeof header == 'string' ? header.replace(/&lt;/g, '<').replace(/&gt;/g, '>') : '';
     const footerHTML = typeof footer == 'string' ? footer.replace(/&lt;/g, '<').replace(/&gt;/g, '>') : '';
+    const cardItems = items.filter(item => item.is_card == 'true');
 
     let sections = null;
 
@@ -112,6 +113,8 @@ class ListPage extends Component {
         </div>
       );
     }
+
+    const isCard = true;
 
     return (
       <div className="page-container">
@@ -135,6 +138,12 @@ class ListPage extends Component {
                 {this.sortByPrice([1, 3, 5, 10])}
                 {this.otherPrice([1, 3, 5, 10])}
                 {sections}
+              </ul>
+              <div className="coupon-flag">
+                <img src={__COUPON_IMG_URL__} />
+              </div>
+              <ul className="wx-cards">
+                {cardItems.map(item => <Item key={item.id} {...item} {...boundActionCreators} isCard={isCard} />)}
               </ul>
               <div dangerouslySetInnerHTML={{__html: footerHTML }}></div>
             </div>
