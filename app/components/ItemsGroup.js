@@ -23,10 +23,12 @@ export default props => {
     priceTitleImgUrl = 'http://wanliu-piano.b0.upaiyun.com/uploads/shop/poster/100159/375309f0feed7055dee38655f7725fd3.png';
   }
 
+  const isCard = false;
+
   return (
       <TransitionGroup className="list-group" transitionName="item" component="div" transitionEnterTimeout={500} transitionLeaveTimeout={500}>
         {items.length > 0 && <img className="price-title" src={priceTitleImgUrl}/>}
-        {items.map(item => <Item key={item.id} {...item} {...boundActionCreators}/>)}
+        {items.map(item => <Item key={item.id} {...item} {...boundActionCreators} isCard={isCard}/>)}
       </TransitionGroup>
   );
 };
