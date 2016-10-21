@@ -139,12 +139,16 @@ class ListPage extends Component {
                 {this.otherPrice([1, 3, 5, 10])}
                 {sections}
               </ul>
-              <div className="coupon-flag">
-                <img src={__COUPON_IMG_URL__} />
-              </div>
-              <ul className="wx-cards">
-                {cardItems.map(item => <Item key={item.id} {...item} {...boundActionCreators} isCard={isCard} />)}
-              </ul>
+              { cardItems.length > 0 &&
+                <div>
+                  <div className="coupon-flag">
+                    <img src={__COUPON_IMG_URL__} />
+                  </div>
+                  <ul className="wx-cards">
+                    {cardItems.map(item => <Item key={item.id} {...item} {...boundActionCreators} isCard={isCard} />)}
+                  </ul>
+                </div>
+              }
               <div dangerouslySetInnerHTML={{__html: footerHTML }}></div>
             </div>
           </div>
