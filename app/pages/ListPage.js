@@ -133,7 +133,7 @@ class ListPage extends Component {
             <div className="list-page" ref="list-page">
               <img className="list-poster" src={__LIST_IMG__}/>
               {!listFetched && <div style={{textAlign: 'center'}}><Loading color="#FFF" size="9px" margin="4px"/></div>}
-              <div dangerouslySetInnerHTML={{__html: headerHTML }}></div>
+              <div className="header_fragment" dangerouslySetInnerHTML={{__html: headerHTML }}></div>
               <ul className="list">
                 {this.sortByPrice([1, 3, 5, 10])}
                 {this.otherPrice([1, 3, 5, 10])}
@@ -149,7 +149,7 @@ class ListPage extends Component {
                   </ul>
                 </div>
               }
-              <div dangerouslySetInnerHTML={{__html: footerHTML }}></div>
+              <div className="footer_fragment" dangerouslySetInnerHTML={{__html: footerHTML }}></div>
             </div>
           </div>
         </div>
