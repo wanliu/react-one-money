@@ -69,7 +69,7 @@ class ListPage extends Component {
       <ItemsGroup
         key={price}
         price={price}
-        items={items.filter(item => item.price == price && item.item.is_card != 'true')}
+        items={items.filter(item => item.price == price && item.is_card != 'true')}
         boundActionCreators={boundActionCreators}
       />);
   }
