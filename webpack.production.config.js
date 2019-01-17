@@ -15,14 +15,14 @@ const config = {
   // __LIST_IMG__            : JSON.stringify(process.env.LISTIMG || 'http://wanliu-piano.b0.upaiyun.com/uploads/shop/logo/198/4b878ea97ce8d43d97eed22965ec6a73.jpg'),  // 列表图片
   __LIST_IMG__            : JSON.stringify(process.env.LISTIMG || 'http://wanliu-piano.b0.upaiyun.com/uploads/shop/logo/198/8611fe3864cae4024c05ef7fe2daef87.jpg'),  // 列表图片
   __DEFAULT_AVATAR__      : JSON.stringify(process.env.DEFAULTAVATAR || 'http://wanliu-piano.b0.upaiyun.com/uploads/shop/logo/1/default_avatar.gif!avatar'),
-  __SIGNUP_URL__          : JSON.stringify(process.env.SIGNURL || 'http://m.wanliu.biz/authorize/weixin'),
+  __SIGNUP_URL__          : JSON.stringify(process.env.SIGNURL || 'http://leiyang-jieshang.jiejie.io/authorize/weixin'),
   __API__                 : JSON.stringify(process.env.APIURL || '/api/promotions/one_money'),
   __ENV__                 : JSON.stringify('PRODUCTION'),
   __WINNERS_NUM__         : JSON.stringify(process.env.WINNERS || 50),
   __INTRODUCTION_LINK__   : JSON.stringify(process.env.INTRODUCTIONLINK || 'https://wap.koudaitong.com/v2/showcase/mpnews?alias=5nr3d4tc&spm=m1461292357652104565180197.scan.1449810565'),
   __INTRODUCTION_POSTER__ : JSON.stringify(process.env.INTRODUCTIONPOSTER || 'http://wanliu-piano.b0.upaiyun.com/uploads/shop_category/image/0c549461633e696a8841886a888b6a93.jpg'),
   __TIMESTAMP__           : JSON.stringify(process.env.TICK || new Date().getTime()),
-  __GIFT_ITEM_LINK__       : JSON.stringify(process.env.GIFTITEMLINK || 'http://m.wanliu.biz/html/%E8%80%92%E9%98%B3%E8%A1%97%E4%B8%8A/gift-item/?itemId='),
+  __GIFT_ITEM_LINK__       : JSON.stringify(process.env.GIFTITEMLINK || 'http://leiyang-jieshang.jiejie.io/html/%E8%80%92%E9%98%B3%E8%A1%97%E4%B8%8A/gift-item/?itemId='),
   __SHOW_INTRODUCE__      : JSON.stringify(process.env.SHOWINTRODUCE || false),
   __COUPON_IMG_URL__       : JSON.stringify(process.env.COUPONIMG || 'http://wanliu-piano.b0.upaiyun.com/uploads/shop/logo/198/d0d4ae728d40d1660e428f0eb84e0d10.png'),
 };
