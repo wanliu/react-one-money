@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "app/main.jsx",
+  "engines": {
+    "node": "=6.2.2",
+    "npm": "=3.5.9"
+  },
   "scripts": {
     "lint": "eslint 'app/**/*.@(js|jsx)'",
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -62,8 +66,9 @@
     "redux-devtools-log-monitor": "^1.0.1",
     "redux-logger": "^2.3.2",
     "style-loader": "~0.13.0",
-    "stylus-loader": "^1.4.3",
-    "webpack": "~1.12.9",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^2.4.0",
+    "webpack": "^1.14.0",
     "webpack-cli": "^3.2.1",
     "webpack-dev-server": "~1.14.0"
   },
